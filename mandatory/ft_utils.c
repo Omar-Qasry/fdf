@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 05:06:35 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/06/27 14:29:40 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/06/29 17:36:39 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (tab);
 }
 
-int	ft_count_words(const char *str, char d)
+int	ft_count_words(const char *str)
 {
 	int	i;
 	int	count;
@@ -44,11 +44,36 @@ int	ft_count_words(const char *str, char d)
 	count = 0;
 	while (str[i])
 	{
-		if (i == 0 && str[i] != d)
+		while (str[i] && (str[i] == ' ' || str[i] == '\n'))
+			i++;
+		if (str[i])
 			count++;
-		if (str[i] == d && str[i + 1] != d && str[i + 1] != '\0')
-			count++;
-		i++;
+		while (str[i] && (str[i] != ' ' && str[i] != '\n'))
+			i++;
 	}
 	return (count);
+}
+long	ft_atoi(char *str)
+{
+	long	re;
+	int		sg;
+
+	sg = 1;
+	re = 0;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sg *= -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		if ((re > INT_MAX && sg == 1) || (-re < INT_MIN && sg == -1))
+			ft_error("map invalid");
+		re = re * 10 + *str - '0';
+		str++;
+	}
+	return (re * sg);
 }
