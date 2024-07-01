@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/06/29 18:34:55 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:15:02 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <stdio.h>
 # include <mlx.h>
 
-# define WIDTH 500
-# define HEIGHT 500
+# define WIDTH 1920
+# define HEIGHT 1080
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
@@ -34,41 +34,63 @@ typedef struct s_point
 	int 			x;
 	int 			y;
 	int				z;
+	int				color;
 	struct s_point *next;
 }t_point ;
 
+
+typedef struct s_var
+{
+	int	x;
+	int	y;
+	int	z;
+	int	color;
+}t_var ;
+
+typedef struct s_mlx
+{
+	void			*mlx_img;
+	void			*mlx_conect;
+	void			*mlx_win;
+	char			*mlx_data;
+}t_mlx;
 typedef struct s_fdf
 {
-	void			*img;
-	void			*mlx;
-	void			*mlx_win;
 	char			*maps_name;
 	int				line_length;
 	int				nb_line;
 	int				maps_fd;
+	struct s_var	var;
+	struct s_point *point;
+	struct s_mlx	mlx;
 }t_fdf;
 
 // linked list
-t_point	*ft_lstnew(int x, int y, int z);
+t_point	*ft_lstnew(t_var *var);
 void	ft_lstadd_back(t_point **lst, t_point *newx);
 t_point	*ft_lstlast(t_point *lst);
 int		ft_lstsize(t_point *lst);
 // void	ft_lstclear(t_fdf **lst);
 
-void	ft_push(t_point **point, int row, int colone, int z);
-void	*ft_calloc(size_t count, size_t size);
+// parsing functions
+void	ft_map_error_check(t_fdf *box);
+void	ft_parsing(t_fdf *box, t_point **point);
+void	ft_push(t_point **point, t_var *var);
 int		ft_count_words(const char *str);
-void	ft_bzero(void *s, size_t n);
+
+//util functions
+int		ft_atoi_base(const char *str);
 char	**ft_split(char const *s, char c);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
 long	ft_atoi(char *str);
 
 // error function
 void	ft_error(char *str);
 void	*is_free(char **return_arr);
-
-void	ft_map_error_check(t_fdf *box);
-void	ft_parsing(t_fdf *box, t_point **point);
-
+// mlx and draw functions
+// void	ft_mlx_and_draw(t_fdf	*box, t_point *point, t_mlx	*mlx);
+void	ft_mlx_and_draw(t_fdf	*box, t_mlx	*mlx);
 //get_next_line function
 char	*get_next_line(int fd);
 size_t	ft_strlen(char const *str);

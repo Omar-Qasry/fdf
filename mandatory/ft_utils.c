@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 05:06:35 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/06/29 17:36:39 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/01 01:13:11 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,48 @@ long	ft_atoi(char *str)
 		str++;
 	}
 	return (re * sg);
+}
+
+char	to_lower(char c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (c + ('a' - 'A'));
+	return (c);
+}
+
+int	get_digit(char c, int digits_in_base)
+{
+	int max_digit;
+
+	if (digits_in_base <= 10)
+		max_digit = digits_in_base + '0';
+	else
+		max_digit = digits_in_base - 10 + 'a';
+	if (c >= '0' && c <= '9' && c <= max_digit)
+		return (c - '0');
+	else if (c >= 'a' && c <= 'f' && c <= max_digit)
+		return (10 + c - 'a');
+	else
+		return (-1);
+}
+
+int	ft_atoi_base(const char *str)
+{
+	int result = 0;
+	int sign = 1;
+	int digit;
+
+	if (*str == '-')
+	{
+		sign = -1;
+		++str;
+	}
+
+	while ((digit = get_digit(to_lower(*str), 16)) >= 0)
+	{
+		result = result * 16;
+		result = result + (digit * sign);
+		++str;
+	}
+	return (result);
 }

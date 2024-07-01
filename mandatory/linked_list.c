@@ -6,22 +6,23 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 16:15:14 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/06/29 18:03:06 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/06/30 09:37:18 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point	*ft_lstnew(int x, int y, int z)
+t_point	*ft_lstnew(t_var *var)
 {
 	t_point	*point;
 
 	point = (t_point *)malloc(sizeof(t_point));
 	if (!point)
 		return (NULL);
-	point->x = x;
-	point->y = y;
-	point->z = z;
+	point->x = var->x;
+	point->y = var->y;
+	point->z = var->z;
+	point->color = var->color;
 	point->next = NULL;
 	return (point);
 }
