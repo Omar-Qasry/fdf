@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/01 12:15:02 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/02 10:09:12 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ int		ft_lstsize(t_point *lst);
 
 // parsing functions
 void	ft_map_error_check(t_fdf *box);
-void	ft_parsing(t_fdf *box, t_point **point);
-void	ft_push(t_point **point, t_var *var);
+void	ft_parsing(t_fdf *box);
+void	ft_push(t_fdf	*box);
 int		ft_count_words(const char *str);
 
 //util functions
@@ -90,7 +90,7 @@ void	ft_error(char *str);
 void	*is_free(char **return_arr);
 // mlx and draw functions
 // void	ft_mlx_and_draw(t_fdf	*box, t_point *point, t_mlx	*mlx);
-void	ft_mlx_and_draw(t_fdf	*box, t_mlx	*mlx);
+void	ft_mlx_and_draw(t_fdf	*box);
 //get_next_line function
 char	*get_next_line(int fd);
 size_t	ft_strlen(char const *str);
