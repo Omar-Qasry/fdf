@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/02 10:09:12 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:55:54 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 # define HEIGHT 1080
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 10000
 # endif
 
 typedef struct s_point
 {
-	int 			x;
-	int 			y;
+	int				x;
+	int				y;
 	int				z;
 	int				color;
 	struct s_point *next;
@@ -42,8 +42,11 @@ typedef struct s_point
 typedef struct s_var
 {
 	int	x;
+	int	x2;
 	int	y;
+	int	y2;
 	int	z;
+	int	z2;
 	int	color;
 }t_var ;
 

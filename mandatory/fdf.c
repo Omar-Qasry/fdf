@@ -6,11 +6,12 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 02:09:18 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/02 11:57:23 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/06 16:30:46 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 
 int	main(int ac, char **av)
 {
@@ -31,7 +32,7 @@ int	main(int ac, char **av)
 		// }
 		// printf("%d %d\n", box->nb_line, box->line_length);
 		//a free function needed
-		free(box);
+		exit(EXIT_SUCCESS);
 	}
 	else
 		ft_error("wrong argument");
