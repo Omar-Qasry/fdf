@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/11 16:55:54 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/12 14:55:40 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <stdio.h>
-# include <mlx.h>
+# include "/usr/local/include/mlx.h"
 
 # define WIDTH 1920
 # define HEIGHT 1080
