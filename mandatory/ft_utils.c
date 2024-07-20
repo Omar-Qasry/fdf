@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 05:06:35 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/12 16:50:18 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/13 13:57:59 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	ft_count_words(const char *str)
 	}
 	return (count);
 }
+
 long	ft_atoi(char *str)
 {
 	long	re;
@@ -87,7 +88,7 @@ char	to_lower(char c)
 
 int	get_digit(char c, int digits_in_base)
 {
-	int max_digit;
+	int	max_digit;
 
 	if (digits_in_base <= 10)
 		max_digit = digits_in_base + '0';
@@ -103,23 +104,24 @@ int	get_digit(char c, int digits_in_base)
 
 int	ft_atoi_base(const char *str)
 {
-	int result = 0;
-	int sign = 1;
-	int digit;
+	int	result;
+	int	sign;
+	int	digit;
 
+	result = 0;
+	sign = 1;
 	if (*str == '-')
 	{
 		sign = -1;
 		++str;
 	}
-
-	while ((digit = get_digit(to_lower(*str), 16)) >= 0)
+	digit = get_digit(to_lower(*str), 16);
+	while (digit >= 0)
 	{
 		result = result * 16;
 		result = result + (digit * sign);
 		++str;
+		digit = get_digit(to_lower(*str), 16);
 	}
 	return (result);
 }
-
-

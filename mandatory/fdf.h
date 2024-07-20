@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/12 14:55:40 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/19 23:32:22 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
+# define RED_X 17
+# define ESC 53
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10000
+#  define BUFFER_SIZE 100000
 # endif
 
 typedef struct s_point
@@ -35,10 +37,18 @@ typedef struct s_point
 	int				y;
 	int				z;
 	int				color;
-	struct s_point *next;
-}t_point ;
+	struct s_point	*next;
+}	t_point;
 
-
+typedef struct s_draw
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	error;
+	int	e2;
+}	t_draw;
 typedef struct s_var
 {
 	int	x;
@@ -48,7 +58,7 @@ typedef struct s_var
 	int	z;
 	int	z2;
 	int	color;
-}t_var ;
+}	t_var;
 
 typedef struct s_mlx
 {
@@ -56,7 +66,8 @@ typedef struct s_mlx
 	void			*mlx_conect;
 	void			*mlx_win;
 	char			*mlx_data;
-}t_mlx;
+}	t_mlx;
+
 typedef struct s_fdf
 {
 	char			*maps_name;
@@ -64,16 +75,17 @@ typedef struct s_fdf
 	int				nb_line;
 	int				maps_fd;
 	struct s_var	var;
-	struct s_point *point;
+	struct s_point	*point;
 	struct s_mlx	mlx;
-}t_fdf;
+	struct s_draw	draw;
+}	t_fdf;
 
 // linked list
 t_point	*ft_lstnew(t_var *var);
 void	ft_lstadd_back(t_point **lst, t_point *newx);
 t_point	*ft_lstlast(t_point *lst);
 int		ft_lstsize(t_point *lst);
-// void	ft_lstclear(t_fdf **lst);
+void	ft_lstclear(t_fdf *lst);
 
 // parsing functions
 void	ft_map_error_check(t_fdf *box);
@@ -92,8 +104,8 @@ long	ft_atoi(char *str);
 void	ft_error(char *str);
 void	*is_free(char **return_arr);
 // mlx and draw functions
-// void	ft_mlx_and_draw(t_fdf	*box, t_point *point, t_mlx	*mlx);
 void	ft_mlx_and_draw(t_fdf	*box);
+void	ft_draw_line(t_fdf *box);
 //get_next_line function
 char	*get_next_line(int fd);
 size_t	ft_strlen(char const *str);
@@ -104,4 +116,3 @@ void	*ft_memset(void *b, int c, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strchr(char *str, int c);
 #endif
-

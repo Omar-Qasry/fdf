@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 05:26:49 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/06/29 18:39:04 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/20 02:56:52 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_map_error_check(t_fdf *box)
 {
-	char *line;
+	char	*line;
 
 	box->maps_fd = open(box->maps_name, O_RDONLY);
 	if (box->maps_fd == -1)

@@ -6,7 +6,7 @@
 #    By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 01:11:49 by oel-qasr          #+#    #+#              #
-#    Updated: 2024/07/02 21:51:42 by oel-qasr         ###   ########.fr        #
+#    Updated: 2024/07/13 16:44:22 by oel-qasr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM = rm -f
 
 SRCS = mandatory/fdf.c mandatory/ft_map_error_check.c mandatory/get_next_line_utils.c mandatory/get_next_line.c \
 		mandatory/ft_error.c mandatory/ft_utils.c mandatory/ft_parsing.c mandatory/ft_push.c mandatory/ft_split.c \
-		mandatory/linked_list.c mandatory/ft_mlx_and_draw.c\
+		mandatory/linked_list.c mandatory/ft_mlx_and_draw.c mandatory/ft_drawing_algo.c\
 
 SRCS_B = \
 
