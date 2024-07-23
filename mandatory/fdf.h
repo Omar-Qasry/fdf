@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/19 23:32:22 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/23 06:37:04 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,18 @@
 # define ESC 53
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000
+#  define BUFFER_SIZE 2123500000
 # endif
+
+typedef struct s_iso
+{
+	int	previous_x;
+	int	previous_y;
+	int	previous_z;
+	int	previous_x2;
+	int	previous_y2;
+	int	previous_z2;
+}	t_iso;
 
 typedef struct s_point
 {
@@ -39,6 +49,12 @@ typedef struct s_point
 	int				color;
 	struct s_point	*next;
 }	t_point;
+
+
+/*
+
+
+*/
 
 typedef struct s_draw
 {
@@ -62,21 +78,24 @@ typedef struct s_var
 
 typedef struct s_mlx
 {
-	void			*mlx_img;
-	void			*mlx_conect;
-	void			*mlx_win;
-	char			*mlx_data;
+	void	*mlx_img;
+	char	*mlx_data;
+	int		bits_per_pixel;
+	int		win_lenth;
+	int		endian;
 }	t_mlx;
 
 typedef struct s_fdf
 {
+	void			*mlx_win;
+	void			*mlx_conect;
 	char			*maps_name;
 	int				line_length;
 	int				nb_line;
 	int				maps_fd;
+	t_mlx			img;
 	struct s_var	var;
 	struct s_point	*point;
-	struct s_mlx	mlx;
 	struct s_draw	draw;
 }	t_fdf;
 

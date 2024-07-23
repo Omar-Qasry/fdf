@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 09:58:44 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/20 02:59:33 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/23 00:20:48 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ void	ft_parsing(t_fdf *box)
 			if (color)
 				box->var.color = ft_atoi_base(color);
 			else
-				box->var.color = ft_atoi_base("ffffff");
+				box->var.color = ft_atoi_base("04ffff");
 			free(color);
 			box->var.z = ft_atoi(splite_rows[i]);
 			ft_push(box);
 			box->var.x++;
+			free(line);
 			line = NULL;
 			i++;
 		}

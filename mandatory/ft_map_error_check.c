@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 05:26:49 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/20 02:56:52 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/21 20:45:12 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	ft_map_error_check(t_fdf *box)
 	box->nb_line++;
 	while (line)
 	{
+		free(line);
 		line = get_next_line(box->maps_fd);
 		if (!line)
 			break ;
 		box->nb_line++;
 		if (ft_count_words(line) != box->line_length)
 			ft_error("Found wrong line length. Exiting\n");
-		free(line);
 	}
 	free(line);
 	line = NULL;

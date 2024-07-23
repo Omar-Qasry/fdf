@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 16:15:14 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/20 00:12:47 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/21 23:51:44 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ void	ft_lstclear(t_fdf *lst)
 	while (lst->point)
 	{
 		tmp = lst->point->next;
-		// if (lst->point)
-		// 	is_free(lst->point);
 		free(lst);
 		lst->point = tmp;
 	}

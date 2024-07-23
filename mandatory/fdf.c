@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 02:09:18 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/20 02:55:40 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/23 06:07:04 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	f()
 }
 int	main(int ac, char **av)
 {
-	atexit(f);
+	// atexit(f);
 	t_fdf	*box;
 
 	if(ac != 2)
