@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 06:35:21 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/06/29 18:14:48 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/24 10:42:23 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,12 @@ void	ft_error(char *str)
 	ft_putstr_fd(str);
 	exit(EXIT_FAILURE);
 }
-// void	ft_lstclear(t_stack **lst)
-// {
-// 	t_stack	*tmp;
 
-// 	if (!lst)
-// 		return ;
-// 	while (*lst)
-// 	{
-// 		tmp = (*lst)->next;
-// 		free (*lst);
-// 		*lst = tmp;
-// 	}
-// 	free(*lst);
-// 	*lst = NULL;
-// }
+int	ft_destory(t_fdf *box)
+{
+	mlx_destroy_image(box->mlx_conect, box->img.mlx_img);
+	mlx_destroy_window(box->mlx_conect, box->mlx_win);
+	free(box);
+	exit(EXIT_SUCCESS);
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 09:58:44 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/23 00:20:48 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/24 10:17:13 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void	ft_parsing(t_fdf *box)
 	char	**splite_rows;
 	int		i;
 	char	*color;
+	float	k;
 
 	i = 0;
+	k = 0;
 	box->maps_fd = open(box->maps_name, O_RDONLY);
 	if (box->maps_fd == -1)
 		ft_error("no such file");
@@ -49,7 +51,7 @@ void	ft_parsing(t_fdf *box)
 			if (color)
 				box->var.color = ft_atoi_base(color);
 			else
-				box->var.color = ft_atoi_base("04ffff");
+				box->var.color = get_cr(0x91F1EF, 0xFFD5E0, speed_color(box->var.x, box->var.y) + k/4);
 			free(color);
 			box->var.z = ft_atoi(splite_rows[i]);
 			ft_push(box);
@@ -57,6 +59,7 @@ void	ft_parsing(t_fdf *box)
 			free(line);
 			line = NULL;
 			i++;
+			k += 0.1;
 		}
 		free(line);
 		is_free(splite_rows);

@@ -6,19 +6,19 @@
 #    By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 01:11:49 by oel-qasr          #+#    #+#              #
-#    Updated: 2024/07/22 23:56:02 by oel-qasr         ###   ########.fr        #
+#    Updated: 2024/07/24 10:44:41 by oel-qasr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 NAME_B = fdf_bonus
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCS = mandatory/fdf.c mandatory/ft_map_error_check.c mandatory/get_next_line_utils.c mandatory/get_next_line.c \
 		mandatory/ft_error.c mandatory/ft_utils.c mandatory/ft_parsing.c mandatory/ft_push.c mandatory/ft_split.c \
-		mandatory/linked_list.c mandatory/ft_mlx_and_draw.c mandatory/ft_drawing_algo.c\
+		mandatory/linked_list.c mandatory/ft_mlx_and_draw.c mandatory/ft_drawing_algo.c mandatory/ft_colore.c\
 
 SRCS_B = \
 

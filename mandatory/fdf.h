@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/23 06:37:04 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/24 10:43:48 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@
 # define HEIGHT 1080
 # define RED_X 17
 # define ESC 53
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2123500000
-# endif
+# define BUFFER_SIZE 21474836
 
 typedef struct s_iso
 {
@@ -94,6 +91,7 @@ typedef struct s_fdf
 	int				nb_line;
 	int				maps_fd;
 	t_mlx			img;
+	int				max_z;
 	struct s_var	var;
 	struct s_point	*point;
 	struct s_draw	draw;
@@ -122,9 +120,15 @@ long	ft_atoi(char *str);
 // error function
 void	ft_error(char *str);
 void	*is_free(char **return_arr);
+int		ft_destory(t_fdf *box);
 // mlx and draw functions
 void	ft_mlx_and_draw(t_fdf	*box);
-void	ft_draw_line(t_fdf *box);
+void	ft_draw_line(t_point x1, t_point x2, t_fdf *box);
+void	my_pixel_put(int x, int y, int color, t_fdf *box);
+float	speed_color(int x, int y);
+void	color_back(t_fdf *box);
+unsigned int	get_cr(unsigned int color1, unsigned int color2, float t);
+void	ft_prepar_point(t_point *point, t_fdf *box);
 //get_next_line function
 char	*get_next_line(int fd);
 size_t	ft_strlen(char const *str);
