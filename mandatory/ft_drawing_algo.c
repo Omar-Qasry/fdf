@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 13:50:20 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/24 10:41:19 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/25 06:28:45 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	ft_prepar_point(t_point *point, t_fdf *box)
 	point->y *= scale ;
 	point->z *= scale;
 	iso(point);
-	x_offset = (WIDTH - (box->line_length * scale * cos(0.523599) + box->nb_line * scale * sin(0.523599))) / 2;
-	y_offset = (HEIGHT - (box->line_length * scale * sin(0.523599) + box->nb_line * scale * cos(0.523599))) / 1.1;
+	x_offset = (WIDTH - (box->line_length * scale * cos(0.523599) + box->nb_line * scale * sin(0.7))) / 2;
+	y_offset = (HEIGHT - (box->line_length * scale * sin(0.7) + box->nb_line * scale * cos(0.523599))) / 2;
 	x_offset += 300;
 	point->x += x_offset;
 	point->y += y_offset;
@@ -91,6 +91,3 @@ void	ft_draw_line(t_point x1, t_point x2, t_fdf *box)
 		}
 	}
 }
-/*
-ft_parsing
-*/

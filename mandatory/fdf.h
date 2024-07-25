@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/24 10:43:48 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/25 09:39:31 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ typedef struct s_point
 	struct s_point	*next;
 }	t_point;
 
-
-/*
-
-
-*/
+typedef struct s_color
+{
+	int	color1;
+	int	color2;
+	int	x;
+}	t_color;
 
 typedef struct s_draw
 {
@@ -95,6 +96,7 @@ typedef struct s_fdf
 	struct s_var	var;
 	struct s_point	*point;
 	struct s_draw	draw;
+	struct s_color	color;
 }	t_fdf;
 
 // linked list
