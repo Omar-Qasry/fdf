@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_list.c                                      :+:      :+:    :+:   */
+/*   linked_list_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 16:15:14 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/25 11:48:23 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/25 10:29:41 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 t_point	*ft_lstnew(t_var *var)
 {
@@ -65,4 +65,21 @@ int	ft_lstsize(t_point *lst)
 		count++;
 	}
 	return (count);
+}
+
+
+void	ft_lstclear(t_fdf *lst)
+{
+	t_point	*tmp;
+
+	if (!lst)
+		return ;
+	while (lst->point)
+	{
+		tmp = lst->point->next;
+		free(lst);
+		lst->point = tmp;
+	}
+	free(lst->point);
+	lst->point = NULL;
 }

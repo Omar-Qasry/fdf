@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_push_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 02:09:18 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/25 11:49:29 by oel-qasr         ###   ########.fr       */
+/*   Created: 2024/06/29 16:11:22 by oel-qasr          #+#    #+#             */
+/*   Updated: 2024/07/25 10:29:25 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-// void	f()
-// {
-// 	system("leaks fdf");
-// }
-// atexit(f);
-int	main(int ac, char **av)
-{
-	t_fdf	*box;
+#include "fdf_bonus.h"
 
-	if (ac != 2)
-		ft_error("wrong argument");
-	box = (t_fdf *)ft_calloc(1, sizeof(t_fdf));
-	box->maps_name = av[1];
-	ft_map_error_check(box);
-	ft_parsing(box);
-	ft_mlx_and_draw(box);
-	return (0);
+void	ft_push(t_fdf *box)
+{
+	t_point	*new_node;
+
+	new_node = ft_lstnew(&box->var);
+	if (!new_node)
+		return ;
+	ft_lstadd_back(&box->point, new_node);
 }

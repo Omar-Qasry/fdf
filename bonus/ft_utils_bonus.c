@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_utils_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 05:06:35 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/25 11:47:58 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/26 05:46:17 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -53,3 +53,4 @@ int	ft_count_words(const char *str)
 	}
 	return (count);
 }
+

@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:40:03 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/24 10:43:40 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/25 11:51:11 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	color_back(t_fdf *box)
 		j = 0;
 		while (j <= WIDTH)
 		{
-			my_pixel_put(j, i, get_cr(0x000000, 0xc0c0c0, speed_color(j, i)), box);
+			my_pixel_put(j, i,
+				get_cr(0x000000, 0xc0c0c0, speed_color(j, i)), box);
 			j++;
 		}
 		i++;

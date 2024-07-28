@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/26 09:36:35 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/28 10:14:44 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FDF_BONUS_H
+# define FDF_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -26,6 +26,16 @@
 # define HEIGHT 1080
 # define RED_X 17
 # define ESC 53
+# define paint_all 35 // p
+# define paint_ba 11 // B
+# define paint_z 15 // R
+# define paint_low_z 5 // G
+# define resset 7 // x
+# define up 126
+# define down 125
+# define Left 123
+# define right 124
+# define conic 8
 # define BUFFER_SIZE 21474836
 
 typedef struct s_iso
@@ -49,9 +59,9 @@ typedef struct s_point
 
 typedef struct s_color
 {
-	int	color1;
-	int	color2;
-	int	x;
+	unsigned int	color1;
+	unsigned int	color2;
+	int				x;
 }	t_color;
 
 typedef struct s_draw
@@ -111,14 +121,14 @@ void			ft_map_error_check(t_fdf *box);
 void			ft_parsing(t_fdf *box);
 void			ft_push(t_fdf	*box);
 int				ft_count_words(const char *str);
-
 //util functions
 int				ft_atoi_base(const char *str);
 char			**ft_split(char const *s, char c);
 void			*ft_calloc(size_t count, size_t size);
 void			ft_bzero(void *s, size_t n);
 long			ft_atoi(char *str);
-
+int				min(int a, int b);
+int				ft_random();
 // error function
 void			ft_error(char *str);
 void			*is_free(char **return_arr);
@@ -127,11 +137,23 @@ int				ft_destory(t_fdf *box);
 void			ft_mlx_and_draw(t_fdf	*box);
 void			ft_draw_line(t_point x1, t_point x2, t_fdf *box);
 void			my_pixel_put(int x, int y, int color, t_fdf *box);
-float			speed_color(int x, int y);
-void			color_back(t_fdf *box);
-unsigned int	get_cr(unsigned int color1, unsigned int color2, float t);
 void			ft_prepar_point(t_point *point, t_fdf *box);
-int				min(int a, int b);
+void			davinchi(t_fdf	*box);
+void			scale_list(t_fdf *box);
+void			translate(t_fdf	*box, int x);
+void			iso_2(t_point *point);
+void			ft_conic(t_fdf *box);
+// colore functions
+unsigned int	get_cr(unsigned int color1, unsigned int color2, float t);
+void			color_back(t_fdf *box, int x);
+float			speed_color(int x, int y);
+int				ft_change_color(t_fdf *box, int x);
+unsigned int	color_gradient(t_fdf *box, int i);
+char			*find_color(char *str);
+void			ft_new_color(t_fdf *box);
+void			ft_paint_z(t_fdf *box);
+void			ft_paint_low_z(t_fdf *box);
+void			ft_paint_all(t_fdf *box);
 //get_next_line function
 char			*get_next_line(int fd);
 size_t			ft_strlen(char const *str);
