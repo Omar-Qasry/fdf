@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/28 10:14:44 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:35:04 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@
 # define down 125
 # define Left 123
 # define right 124
-# define conic 8
+# define minus 78 // -
+# define plus 69 // +
+# define prajection 8 // C
 # define BUFFER_SIZE 21474836
 
 typedef struct s_iso
@@ -105,6 +107,9 @@ typedef struct s_fdf
 	int				max_z;
 	struct s_var	var;
 	struct s_point	*point;
+	struct s_point	*orijinal;
+	struct s_point	*conic;
+	struct s_point	*zoom;
 	struct s_draw	draw;
 	struct s_color	color;
 }	t_fdf;
@@ -115,6 +120,7 @@ void			ft_lstadd_back(t_point **lst, t_point *newx);
 t_point			*ft_lstlast(t_point *lst);
 int				ft_lstsize(t_point *lst);
 void			ft_lstclear(t_fdf *lst);
+t_point			*ft_point_copy(t_point *lst);
 
 // parsing functions
 void			ft_map_error_check(t_fdf *box);
@@ -137,12 +143,17 @@ int				ft_destory(t_fdf *box);
 void			ft_mlx_and_draw(t_fdf	*box);
 void			ft_draw_line(t_point x1, t_point x2, t_fdf *box);
 void			my_pixel_put(int x, int y, int color, t_fdf *box);
-void			ft_prepar_point(t_point *point, t_fdf *box);
+void			ft_prepar_point(t_point *point, t_fdf *box, int x, float z);
 void			davinchi(t_fdf	*box);
-void			scale_list(t_fdf *box);
+void			scale_list(t_fdf *box, int x);
 void			translate(t_fdf	*box, int x);
-void			iso_2(t_point *point);
+void			iso(t_point *point);
+void			zoom(t_point *point, t_fdf *box,int z);
 void			ft_conic(t_fdf *box);
+void			ft_zoum_min(t_fdf *box);
+void			ft_zoum_up(t_fdf *box);
+void			make_conic(t_fdf *box);
+void			go_back_zoom(t_fdf *box);
 // colore functions
 unsigned int	get_cr(unsigned int color1, unsigned int color2, float t);
 void			color_back(t_fdf *box, int x);
@@ -154,6 +165,9 @@ void			ft_new_color(t_fdf *box);
 void			ft_paint_z(t_fdf *box);
 void			ft_paint_low_z(t_fdf *box);
 void			ft_paint_all(t_fdf *box);
+void			ft_draw_y_lines(t_fdf box,t_point *point, int x, int p);
+void			ft_draw_x_lines(t_fdf box,t_point *point, int x, int p);
+void			go_back(t_fdf *box);
 //get_next_line function
 char			*get_next_line(int fd);
 size_t			ft_strlen(char const *str);

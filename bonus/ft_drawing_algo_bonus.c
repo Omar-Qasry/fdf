@@ -6,11 +6,12 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 13:50:20 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/28 10:21:51 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:28:31 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
+#include <math.h>
 
 void	iso(t_point *point)
 {
@@ -22,28 +23,40 @@ void	iso(t_point *point)
 	point->x = (iso.previous_x - iso.previous_y) * cos(0.523599);
 	point->y = (iso.previous_x + iso.previous_y) * sin(0.8) - iso.previous_z;
 }
-void	iso_2(t_point *point)
+void	zoom(t_point *point, t_fdf *box, int z)
 {
-	// t_iso	iso;
+	int scale;
 
-	// iso.previous_x = point->x;
-	// iso.previous_y = point->y;
-	// iso.previous_z = point->z;
-	point->x *= cos(0.523599);
-	point->y *= sin(0.5);
+	scale = min(HEIGHT / (box->nb_line + 1), WIDTH / (box->line_length + 1)) * 0.5;
+	if (z == 0)
+	{
+		point->x *= 1.1 ;//cos(0.523599);
+		point->y *= 1.1;//sin(0.8);
+		point->z *= 1.1;//sin(0.8);
+	}
+	else if (z == 1)
+	{
+		point->x *= 0.9 ;//cos(0.523599);
+		point->y *= 0.9;//sin(0.8);
+		point->z *= 0.9;//sin(0.8);
+	}
+	// printf("this is x %d - %d\n", point->x, point->y);
+
 }
 
-void	ft_prepar_point(t_point *point, t_fdf *box)
+void	ft_prepar_point(t_point *point, t_fdf *box, int x, float z)
 {
 	int		scale;
 	int		x_offset;
 	int		y_offset;
 
-	scale = min(HEIGHT / (box->nb_line + 1), WIDTH / (box->line_length + 1)) * 0.5;
+
+	scale = min(HEIGHT / (box->nb_line + 1), WIDTH / (box->line_length + 1)) * z;
 	point->x *= scale ;
 	point->y *= scale ;
 	point->z *= scale;
-	iso(point);
+	if (x == 0)
+		iso(point);
 	x_offset = (WIDTH - (box->line_length * scale * cos(0.523599) + box->nb_line * scale * sin(0.7))) / 2;
 	y_offset = (HEIGHT - (box->line_length * scale * sin(0.7) + box->nb_line * scale * cos(0.523599))) / 2;
 	x_offset += 300;

@@ -6,14 +6,14 @@
 #    By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 01:11:49 by oel-qasr          #+#    #+#              #
-#    Updated: 2024/07/27 09:15:46 by oel-qasr         ###   ########.fr        #
+#    Updated: 2024/07/29 10:49:30 by oel-qasr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 NAME_B = fdf_bonus
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 RM = rm -f
 
 MLX_DIR = minilibx
@@ -28,6 +28,7 @@ SRCS = mandatory/fdf.c mandatory/ft_map_error_check.c mandatory/get_next_line_ut
 SRCS_B = bonus/fdf_bonus.c bonus/ft_colore_bonus.c bonus/ft_drawing_algo_bonus.c bonus/ft_error_bonus.c bonus/ft_map_error_check_bonus.c \
 		bonus/ft_mlx_and_draw_bonus.c bonus/ft_parsing_bonus.c bonus/ft_push_bonus.c bonus/ft_split_bonus.c bonus/ft_utils_bonus.c \
 		bonus/get_next_line_bonus.c bonus/get_next_line_utils_bonus.c bonus/linked_list_bonus.c bonus/number_utile_bonus.c\
+		bonus/ft_hooks.c \
 
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
