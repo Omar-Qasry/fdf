@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 11:57:51 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:52:53 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ typedef struct s_iso
 typedef struct s_point
 {
 	int				x;
+	int				x_d;
+	int				x_c;
 	int				y;
+	int				y_d;
+	int				y_c;
 	int				z;
 	int				color;
 	struct s_point	*next;
@@ -107,9 +111,6 @@ typedef struct s_fdf
 	float			zoom_s;
 	struct s_var	var;
 	struct s_point	*point;
-	struct s_point	*orijinal;
-	struct s_point	*conic;
-	struct s_point	*zoom;
 	struct s_draw	draw;
 	struct s_color	color;
 }	t_fdf;
@@ -143,9 +144,9 @@ int				ft_destory(t_fdf *box);
 void			ft_mlx_and_draw(t_fdf	*box);
 void			ft_draw_line(t_point x1, t_point x2, t_fdf *box);
 void			my_pixel_put(int x, int y, int color, t_fdf *box);
-void			ft_prepar_point(t_point *point, t_fdf *box, int x, float z);
+void			ft_prepar_point(t_point *point, t_fdf *box, float z);
 void			davinchi(t_fdf	*box);
-void			scale_list(t_fdf *box, int x);
+void			scale_list(t_fdf *box);
 void			translate(t_fdf	*box, int x);
 void			iso(t_point *point);
 void			zoom(t_point *point, t_fdf *box,int z);
@@ -153,7 +154,10 @@ void			ft_conic(t_fdf *box);
 void			ft_zoum_min(t_fdf *box);
 void			ft_zoum_up(t_fdf *box);
 void			make_conic(t_fdf *box);
-void			go_back_zoom(t_fdf *box);
+void			go_to_conic(t_fdf *box);
+void			ft_prepar_point_c(t_point *point, t_fdf *box, float z);
+void			ft_prepar_point_d(t_point *point, t_fdf *box, float z);
+void			conic_prooject(t_fdf *box);
 // colore functions
 unsigned int	get_cr(unsigned int color1, unsigned int color2, float t);
 void			color_back(t_fdf *box, int x);

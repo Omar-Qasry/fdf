@@ -6,12 +6,11 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 13:49:03 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 11:58:48 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:57:55 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
-#include <math.h>
 
 void	davinchi(t_fdf *box)
 {
@@ -57,21 +56,23 @@ void	ft_paint_all(t_fdf *box)
 	ft_draw_x_lines(*box,box->point, -1, -1);
 	ft_draw_y_lines(*box, box->point,-1, -1);
 }
+
 void	make_conic(t_fdf *box)
 {
+	go_to_conic(box);
 	color_back(box, 0);
-	ft_draw_x_lines(*box, box->conic, -1, -1);
-	ft_draw_y_lines(*box, box->conic, -1, -1);
+	ft_draw_x_lines(*box, box->point, -1, -1);
+	ft_draw_y_lines(*box, box->point, -1, -1);
 }
 void	ft_zoum_min(t_fdf *box)
 {
 	t_point			*tmp;
 
 	tmp = box->point;
-	go_back_zoom(box);
+	go_back(box);
 	while (box->point)
 	{
-		ft_prepar_point(box->point, box, 0, box->zoom_s);
+		ft_prepar_point(box->point, box, box->zoom_s);
 		box->point = box->point->next;
 	}
 	box->point = tmp;
@@ -82,10 +83,10 @@ void	ft_zoum_up(t_fdf *box)
 	t_point			*tmp;
 
 	tmp = box->point;
-	go_back_zoom(box);
+	go_back(box);
 	while (box->point)
 	{
-		ft_prepar_point(box->point, box, 0, box->zoom_s);
+		ft_prepar_point(box->point, box, box->zoom_s);
 		box->point = box->point->next;
 	}
 	box->point = tmp;

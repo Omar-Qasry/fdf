@@ -6,52 +6,46 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 01:10:04 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 12:05:32 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:00:26 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
+
 void	go_back(t_fdf *box)
 {
 	t_point	*tmp;
-	t_point	*tmp2;
 
 	tmp = box->point;
-	tmp2 = box->orijinal;
-	while (tmp != NULL && tmp2 != NULL)
+	while (tmp)
 	{
-		tmp->x = tmp2->x;
-		tmp->y = tmp2->y;
-		tmp->z = tmp2->z;
-		tmp->color = tmp2->color;
+		tmp->x = tmp->x_d;
+		tmp->y = tmp->y_d;
 		tmp = tmp->next;
-		tmp2 = tmp2->next;
 	}
 }
-void	go_back_zoom(t_fdf *box)
+
+void	go_to_conic(t_fdf *box)
 {
-	t_point	*tmp;
 	t_point	*tmp2;
 
-	tmp = box->point;
-	tmp2 = box->zoom;
-	while (tmp != NULL && tmp2 != NULL)
+	tmp2 = box->point;
+	while (tmp2)
 	{
-		tmp->x = tmp2->x;
-		tmp->y = tmp2->y;
-		tmp->z = tmp2->z;
-		tmp->color = tmp2->color;
-		tmp = tmp->next;
+		tmp2->x = tmp2->x_c;
+		tmp2->y = tmp2->y_c;
 		tmp2 = tmp2->next;
 	}
 }
+
 void	restor(t_fdf *box)
 {
 	go_back(box);
 	color_back(box, 0);
-	ft_draw_x_lines(*box, box->orijinal, -1, -1);
-	ft_draw_y_lines(*box, box->orijinal, -1, -1);
+	ft_draw_x_lines(*box, box->point, -1, -1);
+	ft_draw_y_lines(*box, box->point, -1, -1);
 }
+
 int	key_hook(int keycode, t_fdf *box)
 {
 	if (keycode == ESC)
@@ -86,7 +80,6 @@ int	key_hook(int keycode, t_fdf *box)
 	}
 	else if (keycode == prajection)
 		make_conic(box);
-	printf("%d\n", keycode);
 	return (0);
 }
 
@@ -166,43 +159,33 @@ void	ft_draw_y_lines(t_fdf box,t_point *point,int x, int p)
 	mlx_put_image_to_window(box.mlx_conect, box.mlx_win, box.img.mlx_img, 0, 0);
 }
 
-void	scale_list(t_fdf *box, int x)
+void	scale_list(t_fdf *box)
 {
 	t_point	*tmp;
 
-	if (x == 0)
+	tmp = box->point;
+	while (box->point)
 	{
-		tmp = box->point;
-		while (box->point)
-		{
-			ft_prepar_point(box->point,box, 0, 0.4);
-			box->point = box->point->next;
-		}
-		box->point = tmp;
+		ft_prepar_point(box->point,box, 0.5);
+		box->point = box->point->next;
 	}
-	else if (x == 1)
-	{
-		tmp = box->orijinal;
-		while (box->orijinal)
-		{
-			ft_prepar_point(box->orijinal,box, 0, 0.4);
-			box->orijinal = box->orijinal->next;
-		}
-		box->orijinal = tmp;
-	}
+	box->point = tmp;
 }
+
 void	conic_prooject(t_fdf *box)
 {
 	t_point	*tmp;
 
-	tmp = box->conic;
-	while (box->conic)
+	tmp = box->point;
+
+	while (box->point)
 	{
-		ft_prepar_point(box->conic,box, 1, 0.4);
-		box->conic = box->conic->next;
+		ft_prepar_point_c(box->point,box, 0.5);
+		box->point = box->point->next;
 	}
-	box->conic = tmp;
+	box->point = tmp;
 }
+
 void	translate(t_fdf	*box, int x)
 {
 	t_point	*tmp;
@@ -225,19 +208,43 @@ void	translate(t_fdf	*box, int x)
 	ft_draw_x_lines(*box,box->point, -1, -1);
 	ft_draw_y_lines(*box,box->point, -1, -1);
 }
+void	scale_orijinal(t_fdf *box)
+{
+	t_point	*tmp;
 
+	tmp = box->point;
+	while (box->point)
+	{
+		ft_prepar_point_d(box->point,box, 0.5);
+		box->point = box->point->next;
+	}
+	box->point = tmp;
+}
+void	make_x_y_copy(t_fdf *box)
+{
+	t_point	*tmp;
+
+	tmp = box->point;
+	while (box->point)
+	{
+		box->point->x_c = box->point->x;
+		box->point->x_d = box->point->x;
+		box->point->y_c = box->point->y;
+		box->point->y_d = box->point->y;
+		box->point = box->point->next;
+	}
+	box->point = tmp;
+}
 void	ft_mlx_and_draw(t_fdf *box)
 {
 	box->mlx_conect = mlx_init();
 	box->mlx_win = mlx_new_window(box->mlx_conect, WIDTH, HEIGHT, box->maps_name);
 	box->img.mlx_img = mlx_new_image(box->mlx_conect, WIDTH, HEIGHT);
 	box->img.mlx_data = mlx_get_data_addr(box->img.mlx_img, &box->img.bits_per_pixel, &box->img.win_lenth, &box->img.endian);
-	box->orijinal = ft_point_copy(box->point);
-	box->conic = ft_point_copy(box->point);
-	box->zoom = ft_point_copy(box->point);
 	box->zoom_s = 0.5;
-	scale_list(box, 0);
-	scale_list(box, 1);
+	make_x_y_copy(box);
+	scale_list(box);
+	scale_orijinal(box);
 	conic_prooject(box);
 	davinchi(box);
 	mlx_hook(box->mlx_win, RED_X, 0, ft_destory, box);
