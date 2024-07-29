@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 17:52:53 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:29:11 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,14 @@ typedef struct s_point
 	int				x;
 	int				x_d;
 	int				x_c;
+	int				x_z;
 	int				y;
 	int				y_d;
 	int				y_c;
+	int				y_z;
 	int				z;
+	int				z_d;
+	int				z_z;
 	int				color;
 	struct s_point	*next;
 }	t_point;
@@ -157,7 +161,7 @@ void			make_conic(t_fdf *box);
 void			go_to_conic(t_fdf *box);
 void			ft_prepar_point_c(t_point *point, t_fdf *box, float z);
 void			ft_prepar_point_d(t_point *point, t_fdf *box, float z);
-void			conic_prooject(t_fdf *box);
+void			go_to_zoom(t_fdf *box);
 // colore functions
 unsigned int	get_cr(unsigned int color1, unsigned int color2, float t);
 void			color_back(t_fdf *box, int x);

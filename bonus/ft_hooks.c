@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 13:49:03 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 17:57:55 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:35:05 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_zoum_min(t_fdf *box)
 	t_point			*tmp;
 
 	tmp = box->point;
-	go_back(box);
+	go_to_zoom(box);
 	while (box->point)
 	{
 		ft_prepar_point(box->point, box, box->zoom_s);
@@ -83,7 +83,7 @@ void	ft_zoum_up(t_fdf *box)
 	t_point			*tmp;
 
 	tmp = box->point;
-	go_back(box);
+	go_to_zoom(box);
 	while (box->point)
 	{
 		ft_prepar_point(box->point, box, box->zoom_s);

@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 01:10:04 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 18:00:26 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:34:03 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	go_back(t_fdf *box)
 	{
 		tmp->x = tmp->x_d;
 		tmp->y = tmp->y_d;
+		tmp->z = tmp->z_z;
 		tmp = tmp->next;
 	}
 }
@@ -34,7 +35,21 @@ void	go_to_conic(t_fdf *box)
 	{
 		tmp2->x = tmp2->x_c;
 		tmp2->y = tmp2->y_c;
+		tmp2->z = tmp2->z_z;
 		tmp2 = tmp2->next;
+	}
+}
+void	go_to_zoom(t_fdf *box)
+{
+	t_point	*tmp3;
+
+	tmp3 = box->point;
+	while (tmp3)
+	{
+		tmp3->x = tmp3->x_z;
+		tmp3->y = tmp3->y_z;
+		tmp3->z = tmp3->z_z;
+		tmp3 = tmp3->next;
 	}
 }
 
@@ -167,19 +182,7 @@ void	scale_list(t_fdf *box)
 	while (box->point)
 	{
 		ft_prepar_point(box->point,box, 0.5);
-		box->point = box->point->next;
-	}
-	box->point = tmp;
-}
-
-void	conic_prooject(t_fdf *box)
-{
-	t_point	*tmp;
-
-	tmp = box->point;
-
-	while (box->point)
-	{
+		ft_prepar_point_d(box->point,box, 0.5);
 		ft_prepar_point_c(box->point,box, 0.5);
 		box->point = box->point->next;
 	}
@@ -208,18 +211,7 @@ void	translate(t_fdf	*box, int x)
 	ft_draw_x_lines(*box,box->point, -1, -1);
 	ft_draw_y_lines(*box,box->point, -1, -1);
 }
-void	scale_orijinal(t_fdf *box)
-{
-	t_point	*tmp;
 
-	tmp = box->point;
-	while (box->point)
-	{
-		ft_prepar_point_d(box->point,box, 0.5);
-		box->point = box->point->next;
-	}
-	box->point = tmp;
-}
 void	make_x_y_copy(t_fdf *box)
 {
 	t_point	*tmp;
@@ -227,10 +219,14 @@ void	make_x_y_copy(t_fdf *box)
 	tmp = box->point;
 	while (box->point)
 	{
-		box->point->x_c = box->point->x;
 		box->point->x_d = box->point->x;
-		box->point->y_c = box->point->y;
 		box->point->y_d = box->point->y;
+		box->point->z_d = box->point->z;
+		box->point->x_c = box->point->x;
+		box->point->y_c = box->point->y;
+		box->point->x_z = box->point->x;
+		box->point->y_z = box->point->y;
+		box->point->z_z = box->point->z;
 		box->point = box->point->next;
 	}
 	box->point = tmp;
@@ -244,8 +240,6 @@ void	ft_mlx_and_draw(t_fdf *box)
 	box->zoom_s = 0.5;
 	make_x_y_copy(box);
 	scale_list(box);
-	scale_orijinal(box);
-	conic_prooject(box);
 	davinchi(box);
 	mlx_hook(box->mlx_win, RED_X, 0, ft_destory, box);
 	mlx_key_hook(box->mlx_win, key_hook, box);
