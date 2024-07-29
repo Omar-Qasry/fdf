@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 11:35:04 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:57:51 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_fdf
 	int				nb_line;
 	int				maps_fd;
 	t_mlx			img;
-	int				max_z;
+	float			zoom_s;
 	struct s_var	var;
 	struct s_point	*point;
 	struct s_point	*orijinal;

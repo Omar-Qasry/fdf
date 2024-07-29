@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 01:10:04 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 11:34:48 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 12:05:32 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,15 @@ int	key_hook(int keycode, t_fdf *box)
 	else if (keycode == resset)
 		restor(box);
 	else if (keycode == minus)
+	{
+		box->zoom_s *= 0.9;
 		ft_zoum_min(box);
+	}
 	else if (keycode == plus)
+	{
+		box->zoom_s *= 1.1;
 		ft_zoum_up(box);
+	}
 	else if (keycode == prajection)
 		make_conic(box);
 	printf("%d\n", keycode);
@@ -229,6 +235,7 @@ void	ft_mlx_and_draw(t_fdf *box)
 	box->orijinal = ft_point_copy(box->point);
 	box->conic = ft_point_copy(box->point);
 	box->zoom = ft_point_copy(box->point);
+	box->zoom_s = 0.5;
 	scale_list(box, 0);
 	scale_list(box, 1);
 	conic_prooject(box);

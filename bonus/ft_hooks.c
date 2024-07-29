@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 13:49:03 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 11:40:11 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:58:48 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,12 @@ void	make_conic(t_fdf *box)
 void	ft_zoum_min(t_fdf *box)
 {
 	t_point			*tmp;
-	static float	z = 1.0;
 
 	tmp = box->point;
 	go_back_zoom(box);
-	z *= 0.9;
 	while (box->point)
 	{
-		ft_prepar_point(box->point, box, 0, z);
+		ft_prepar_point(box->point, box, 0, box->zoom_s);
 		box->point = box->point->next;
 	}
 	box->point = tmp;
@@ -82,14 +80,12 @@ void	ft_zoum_min(t_fdf *box)
 void	ft_zoum_up(t_fdf *box)
 {
 	t_point			*tmp;
-	static float	z = 1.0;
 
 	tmp = box->point;
 	go_back_zoom(box);
-	z *= 1.1;
 	while (box->point)
 	{
-		ft_prepar_point(box->point, box, 0, z);
+		ft_prepar_point(box->point, box, 0, box->zoom_s);
 		box->point = box->point->next;
 	}
 	box->point = tmp;
