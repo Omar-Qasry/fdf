@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 18:29:11 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/30 10:32:45 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@
 # define HEIGHT 1080
 # define RED_X 17
 # define ESC 53
-# define paint_all 35 // p
-# define paint_ba 11 // B
-# define paint_z 15 // R
-# define paint_low_z 5 // G
-# define resset 7 // x
-# define up 126
-# define down 125
-# define Left 123
-# define right 124
-# define minus 78 // -
-# define plus 69 // +
-# define prajection 8 // C
+# define PAINT_ALL 35//paint_all 35 // p
+# define PAINT_BA 11 // B
+# define PAINT_Z 15 // R
+# define PAINT_LOW_Z 5 // G
+# define RESSET 7 // x
+# define UP 126
+# define DOWN 125
+# define LEFT 123
+# define RIGHT 124
+# define MINUS 78 // -
+# define PLUS 69 // +
+# define PROJECTION 8 // C
 # define BUFFER_SIZE 21474836
 
 typedef struct s_iso
@@ -124,7 +124,7 @@ t_point			*ft_lstnew(t_var *var);
 void			ft_lstadd_back(t_point **lst, t_point *newx);
 t_point			*ft_lstlast(t_point *lst);
 int				ft_lstsize(t_point *lst);
-void			ft_lstclear(t_fdf *lst);
+void			ft_lstclear(t_point *lst);
 t_point			*ft_point_copy(t_point *lst);
 
 // parsing functions
@@ -139,7 +139,7 @@ void			*ft_calloc(size_t count, size_t size);
 void			ft_bzero(void *s, size_t n);
 long			ft_atoi(char *str);
 int				min(int a, int b);
-int				ft_random();
+int				ft_random(void);
 // error function
 void			ft_error(char *str);
 void			*is_free(char **return_arr);
@@ -149,19 +149,21 @@ void			ft_mlx_and_draw(t_fdf	*box);
 void			ft_draw_line(t_point x1, t_point x2, t_fdf *box);
 void			my_pixel_put(int x, int y, int color, t_fdf *box);
 void			ft_prepar_point(t_point *point, t_fdf *box, float z);
-void			davinchi(t_fdf	*box);
+void			davinci(t_fdf	*box);
 void			scale_list(t_fdf *box);
+void			make_x_y_copy(t_fdf *box);
 void			translate(t_fdf	*box, int x);
+void			iso_d(t_point *point);
 void			iso(t_point *point);
-void			zoom(t_point *point, t_fdf *box,int z);
+void			zoom(t_point *point, t_fdf *box, int z);
 void			ft_conic(t_fdf *box);
-void			ft_zoum_min(t_fdf *box);
-void			ft_zoum_up(t_fdf *box);
+void			ft_zoum(t_fdf *box, int x);
 void			make_conic(t_fdf *box);
 void			go_to_conic(t_fdf *box);
 void			ft_prepar_point_c(t_point *point, t_fdf *box, float z);
 void			ft_prepar_point_d(t_point *point, t_fdf *box, float z);
 void			go_to_zoom(t_fdf *box);
+void			ft_restor(t_fdf *box);
 // colore functions
 unsigned int	get_cr(unsigned int color1, unsigned int color2, float t);
 void			color_back(t_fdf *box, int x);
@@ -173,8 +175,8 @@ void			ft_new_color(t_fdf *box);
 void			ft_paint_z(t_fdf *box);
 void			ft_paint_low_z(t_fdf *box);
 void			ft_paint_all(t_fdf *box);
-void			ft_draw_y_lines(t_fdf box,t_point *point, int x, int p);
-void			ft_draw_x_lines(t_fdf box,t_point *point, int x, int p);
+void			ft_draw_y_lines(t_fdf box, t_point *point, int x, int p);
+void			ft_draw_x_lines(t_fdf box, t_point *point, int x, int p);
 void			go_back(t_fdf *box);
 //get_next_line function
 char			*get_next_line(int fd);

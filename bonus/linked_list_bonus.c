@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 16:15:14 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/28 13:34:28 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 22:15:44 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,50 +67,18 @@ int	ft_lstsize(t_point *lst)
 	return (count);
 }
 
-void	ft_lstclear(t_fdf *lst)
+void	ft_lstclear(t_point *lst)
 {
 	t_point	*tmp;
 
 	if (!lst)
 		return ;
-	while (lst->point)
+	while (lst)
 	{
-		tmp = lst->point->next;
+		tmp = lst->next;
 		free(lst);
-		lst->point = tmp;
+		lst = tmp;
 	}
-	free(lst->point);
-	lst->point = NULL;
-}
-t_point	*ft_point_copy(t_point *lst)
-{
-	t_var	var;
-	t_point	*head;
-	t_point	*node;
-
-	head = NULL;
-	node  = NULL;
-	if (!lst)
-		return (NULL);
-	while (lst != NULL)
-	{
-		var.x = lst->x;
-		var.y = lst->y;
-		var.color = lst->color;
-		var.z = lst->z;
-		node = ft_lstnew(&var);
-		if (!node)
-		{
-			while (head)
-			{
-				t_point *next = head->next;
-				free(head);
-				head = next;
-			}
-			return (NULL);
-		}
-		ft_lstadd_back(&head, node);
-		lst = lst->next;
-	}
-	return (head);
+	free(lst);
+	lst = NULL;
 }

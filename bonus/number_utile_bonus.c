@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:47:17 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/27 19:59:55 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/30 08:51:49 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,4 @@ int	ft_atoi_base(const char *str)
 		digit = get_digit(to_lower(*str), 16);
 	}
 	return (result);
-}
-int	random_help(int seed)
-{
-	static int r;
-
-	r += 1 + (int)(&seed);
-	r = (r  << (1 + (seed & 32))) ;
-	return (r);
-}
-int	ft_random()
-{
-	return(random_help(0) % 1000);
 }

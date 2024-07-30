@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_bonus.c                                        :+:      :+:    :+:   */
+/*   ft_translate_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 02:09:18 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 22:15:26 by oel-qasr         ###   ########.fr       */
+/*   Created: 2024/07/29 22:26:37 by oel-qasr          #+#    #+#             */
+/*   Updated: 2024/07/30 10:05:38 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
-// void	f()
-// {
-// 	system("leaks fdf");
-// }
-	// atexit(f);
-int	main(int ac, char **av)
-{
-	t_fdf	*box;
 
-	if (ac != 2)
-		ft_error("wrong argument");
-	box = (t_fdf *)ft_calloc(1, sizeof(t_fdf));
-	box->maps_name = av[1];
-	ft_map_error_check(box);
-	ft_parsing(box);
-	ft_mlx_and_draw(box);
-	return (0);
+void	translate(t_fdf	*box, int x)
+{
+	t_point	*tmp;
+
+	tmp = box->point;
+	while (box->point)
+	{
+		if (x == 1)
+			box->point->x += 100;
+		else if (x == -1)
+			box->point->x -= 100;
+		else if (x == 2)
+			box->point->y += 50;
+		else if (x == -2)
+			box->point->y -= 50;
+		box->point = box->point->next;
+	}
+	box->point = tmp;
+	davinci(box);
 }

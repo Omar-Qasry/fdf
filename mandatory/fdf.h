@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 11:56:56 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 21:36:15 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ t_point			*ft_lstnew(t_var *var);
 void			ft_lstadd_back(t_point **lst, t_point *newx);
 t_point			*ft_lstlast(t_point *lst);
 int				ft_lstsize(t_point *lst);
-void			ft_lstclear(t_fdf *lst);
+void			ft_lstclear(t_point *lst);
 
 // parsing functions
 void			ft_map_error_check(t_fdf *box);

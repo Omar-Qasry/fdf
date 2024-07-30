@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 05:06:35 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/26 05:46:17 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/30 10:04:53 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,3 @@ int	ft_count_words(const char *str)
 	}
 	return (count);
 }
-

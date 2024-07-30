@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 06:35:21 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/25 10:29:12 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 21:40:19 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void	ft_error(char *str)
 
 int	ft_destory(t_fdf *box)
 {
+	mlx_clear_window(box->mlx_conect, box->mlx_win);
 	mlx_destroy_image(box->mlx_conect, box->img.mlx_img);
 	mlx_destroy_window(box->mlx_conect, box->mlx_win);
+	ft_lstclear(box->point);
 	free(box);
 	exit(EXIT_SUCCESS);
 	return (0);

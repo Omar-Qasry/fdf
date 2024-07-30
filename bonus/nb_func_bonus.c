@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_bonus.c                                        :+:      :+:    :+:   */
+/*   nb_func_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 02:09:18 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/29 22:15:26 by oel-qasr         ###   ########.fr       */
+/*   Created: 2024/07/30 08:51:18 by oel-qasr          #+#    #+#             */
+/*   Updated: 2024/07/30 08:51:43 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
-// void	f()
-// {
-// 	system("leaks fdf");
-// }
-	// atexit(f);
-int	main(int ac, char **av)
-{
-	t_fdf	*box;
 
-	if (ac != 2)
-		ft_error("wrong argument");
-	box = (t_fdf *)ft_calloc(1, sizeof(t_fdf));
-	box->maps_name = av[1];
-	ft_map_error_check(box);
-	ft_parsing(box);
-	ft_mlx_and_draw(box);
-	return (0);
+int	random_help(int seed)
+{
+	static int	r;
+
+	r += 1 + (int)(&seed);
+	r = (r << (1 + (seed & 32)));
+	return (r);
+}
+
+int	ft_random(void)
+{
+	return (random_help(0) % 1000);
 }

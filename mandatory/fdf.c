@@ -6,16 +6,16 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 02:09:18 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/25 11:49:29 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/29 21:40:35 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 // void	f()
 // {
-// 	system("leaks fdf");
+	// system("leaks fdf");
 // }
-// atexit(f);
+	// atexit(f);
 int	main(int ac, char **av)
 {
 	t_fdf	*box;
