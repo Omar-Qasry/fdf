@@ -1,85 +1,103 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_drawing_algo_bonus.c                            :+:      :+:    :+:   */
+/*   Vincent_van_Gogh_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 13:50:20 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/30 08:38:58 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/30 11:35:04 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-void	ft_draw_line(t_point x1, t_point x2, t_fdf *box)
+unsigned int	determine_color_x(t_fdf box, t_point *point, int x, int p)
 {
-	box->draw.dx = abs(x2.x - x1.x);
-	box->draw.dy = abs(x2.y - x1.y);
-	if (x1.x < x2.x)
-		box->draw.sx = 1;
-	else
-		box->draw.sx = -1;
-	if (x1.y < x2.y)
-		box->draw.sy = 1;
-	else
-		box->draw.sy = -1;
-	box->draw.error = box->draw.dx - box->draw.dy;
-	while (1)
+	unsigned int	color;
+
+	color = 0;
+	if (p == -3)
 	{
-		if (x1.x >= 0 && x1.y >= 0 && x1.x < WIDTH && x1.y < HEIGHT)
-			my_pixel_put(x1.x, x1.y, box->var.color, box);
-		if (x1.x == x2.x && x1.y == x2.y)
-			break ;
-		box->draw.e2 = 2 * box->draw.error;
-		if (box->draw.e2 >= -box->draw.dy)
-		{
-			box->draw.error -= box->draw.dy;
-			x1.x += box->draw.sx;
-		}
-		if (box->draw.e2 <= box->draw.dx)
-		{
-			box->draw.error += box->draw.dx;
-			x1.y += box->draw.sy;
-		}
+		if (point->z > 5)
+			color = color_gradient(&box, x);
+		else
+			color = point->color;
 	}
+	else if (p == -2)
+	{
+		if (point->z < 5)
+			color = color_gradient(&box, x);
+		else
+			color = point->color;
+	}
+	else if (p == 0)
+		color = color_gradient(&box, x);
+	else if (p == -1)
+		color = point->color;
+	return (color);
 }
 
 void	ft_draw_x_lines(t_fdf box, t_point *point, int x, int p)
 {
-	int	j;
+	int		j;
+	t_point	*tmp;
 
 	j = 0;
-	while (point && point->next)
+	tmp = point;
+	while (tmp && tmp->next)
 	{
 		if (j >= (box.line_length - 1))
 		{
+			tmp = tmp->next;
 			j = 0;
-			point = point->next;
 			continue ;
 		}
-		else
-			j++;
-		if (p == -3)
-		{
-			if (point->z > 5)
-				box.var.color = color_gradient(&box, x);
-			else
-				box.var.color = point->color;
-		}
-		else if (p == -2)
-		{
-			if (point->z < 5)
-				box.var.color = color_gradient(&box, x);
-			else
-				box.var.color = point->color;
-		}
-		else if (p == -1)
-			box.var.color = point->color;
-		ft_draw_line(*point, *point->next, &box);
-		point = point->next;
+		j++;
+		box.var.color = determine_color_x(box, tmp, x, p);
+		ft_draw_line(*tmp, *tmp->next, &box);
+		tmp = tmp->next;
 	}
 	mlx_put_image_to_window(box.mlx_conect, box.mlx_win, box.img.mlx_img, 0, 0);
+}
+
+unsigned int	determine_color_y(t_fdf box, t_point *point, int x, int p)
+{
+	unsigned int	color;
+
+	color = 0;
+	if (p == -3)
+	{
+		if (point->z > 5)
+			color = color_gradient(&box, x);
+		else
+			color = point->color;
+	}
+	else if (p == -2)
+	{
+		if (point->z < 5)
+			color = color_gradient(&box, x);
+		else
+			color = point->color;
+	}
+	else if (p == 0)
+		color = color_gradient(&box, x);
+	else if (p == -1)
+		color = point->color;
+	return (color);
+}
+
+int	skip_initial_points(t_point **point, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count && *point)
+	{
+		*point = (*point)->next;
+		i++;
+	}
+	return (i);
 }
 
 void	ft_draw_y_lines(t_fdf box, t_point *point, int x, int p)
@@ -87,33 +105,12 @@ void	ft_draw_y_lines(t_fdf box, t_point *point, int x, int p)
 	t_point	*tmp;
 	int		i;
 
-	i = 0;
 	tmp = point;
-	while (i < box.line_length)
-	{
-		i++;
-		tmp = tmp->next;
-	}
+	i = 0;
+	i = skip_initial_points(&tmp, box.line_length);
 	while (tmp)
 	{
-		if (p == -3)
-		{
-			if (point->z > 5)
-				box.var.color = color_gradient(&box, x);
-			else
-				box.var.color = point->color;
-		}
-		else if (p == -2)
-		{
-			if (point->z < 5)
-				box.var.color = color_gradient(&box, x);
-			else
-				box.var.color = point->color;
-		}
-		else if (p == 0)
-			box.var.color = color_gradient(&box, x);
-		else if (p == -1)
-			box.var.color = point->color;
+		box.var.color = determine_color_y(box, point, x, p);
 		ft_draw_line(*point, *tmp, &box);
 		tmp = tmp->next;
 		point = point->next;

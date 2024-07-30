@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 08:33:41 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/30 08:47:48 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/30 11:43:05 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	go_back(t_fdf *box)
 {
-	t_point	*tmp;
+	t_point	*tmp3;
 
-	tmp = box->point;
-	while (tmp)
+	tmp3 = box->point;
+	while (tmp3)
 	{
-		tmp->x = tmp->x_d;
-		tmp->y = tmp->y_d;
-		tmp->z = tmp->z_z;
-		tmp = tmp->next;
+		tmp3->x = tmp3->x_d;
+		tmp3->y = tmp3->y_d;
+		tmp3->z = tmp3->z_d;
+		tmp3 = tmp3->next;
 	}
 }
 
@@ -42,11 +42,17 @@ void	go_to_conic(t_fdf *box)
 
 void	ft_restor(t_fdf *box)
 {
-	go_back(box);
-	mlx_clear_window(box->mlx_conect, box->mlx_win);
-	color_back(box, 0);
-	ft_draw_x_lines(*box, box->point, -1, -1);
-	ft_draw_y_lines(*box, box->point, -1, -1);
+	t_point			*tmp;
+
+	tmp = box->point;
+	go_to_zoom(box);
+	while (box->point)
+	{
+		ft_prepar_point(box->point, box, 0.5);
+		box->point = box->point->next;
+	}
+	box->point = tmp;
+	davinci(box);
 }
 
 void	make_x_y_copy(t_fdf *box)

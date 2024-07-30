@@ -1,24 +1,10 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/16 01:11:49 by oel-qasr          #+#    #+#              #
-#    Updated: 2024/07/30 10:35:34 by oel-qasr         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = fdf
 NAME_B = fdf_bonus
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Ofast
 RM = rm -f
-
 MLX_DIR = minilibx
-MLX_LIB = $(MLX_DIR)/usr/local/lib/libmlx.a
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 SRCS = mandatory/fdf.c mandatory/ft_map_error_check.c mandatory/get_next_line_utils.c mandatory/get_next_line.c \
 		mandatory/ft_error.c mandatory/ft_utils.c mandatory/ft_parsing.c mandatory/ft_push.c mandatory/ft_split.c \
@@ -30,7 +16,7 @@ SRCS_B = bonus/davinci_bonus.c bonus/fdf_bonus.c bonus/ft_change_point.c bonus/f
 		bonus/ft_mlx_and_draw_bonus.c bonus/ft_parsing_bonus.c bonus/ft_push_bonus.c bonus/ft_scale_bonus.c\
 		bonus/ft_split_bonus.c bonus/ft_translate_bonus.c bonus/ft_utils_bonus.c bonus/ft_zoom_bonus.c\
 		bonus/get_next_line_bonus.c bonus/get_next_line_utils_bonus.c bonus/linked_list_bonus.c bonus/nb_func_bonus.c\
-		bonus/number_utile_bonus.c bonus/Vincent_van_Gogh_bonus.c\
+		bonus/number_utile_bonus.c bonus/Vincent_van_Gogh_bonus.c bonus/ft_draw_line.c\
 
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
