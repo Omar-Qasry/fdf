@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 22:23:50 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/30 12:02:44 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/30 12:07:20 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_zoum(t_fdf *box, int x)
 			if (box->zoom_s <= 0.5)
 				box->zoom_s = 0.5;
 			else
-			box->zoom_s *= 0.9;
+				box->zoom_s *= 0.9;
 		}
 		else
 			box->zoom_s *= 0.9;
