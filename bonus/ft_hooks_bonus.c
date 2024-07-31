@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 13:49:03 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/30 09:00:03 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:23:18 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_paint_low_z(t_fdf *box)
 {
 	static int	i;
 
-	if (i >= 8)
-		i = 0;
+	if (i > 8)
+		i = -1;
 	mlx_clear_window(box->mlx_conect, box->mlx_win);
 	color_back(box, 0);
 	ft_draw_x_lines(*box, box->point, i, -2);
@@ -28,8 +28,8 @@ void	ft_paint_z(t_fdf *box)
 {
 	static int	i;
 
-	if (i >= 8)
-		i = 0;
+	if (i > 8)
+		i = -1;
 	mlx_clear_window(box->mlx_conect, box->mlx_win);
 	color_back(box, 0);
 	ft_draw_x_lines(*box, box->point, i, -3);
@@ -40,8 +40,8 @@ void	ft_new_color(t_fdf *box)
 {
 	static int	i;
 
-	if (i >= 8)
-		i = 0;
+	if (i > 8)
+		i = -1;
 	mlx_clear_window(box->mlx_conect, box->mlx_win);
 	color_back(box, 0);
 	ft_draw_x_lines(*box, box->point, i, 0);

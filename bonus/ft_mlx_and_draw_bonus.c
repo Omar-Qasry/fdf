@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 01:10:04 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/30 10:32:55 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/31 10:26:31 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,19 @@ int	key_hook(int keycode, t_fdf *box)
 void	ft_mlx_and_draw(t_fdf *box)
 {
 	box->mlx_conect = mlx_init();
-	box->mlx_win = mlx_new_window(box->mlx_conect,
-			WIDTH, HEIGHT, box->maps_name);
+	if (box->mlx_conect == NULL)
+		ft_error("init\n");
+	box->mlx_win \
+		= mlx_new_window(box->mlx_conect, WIDTH, HEIGHT, box->maps_name);
+	if (box->mlx_win == NULL)
+		ft_error("init\n");
 	box->img.mlx_img = mlx_new_image(box->mlx_conect, WIDTH, HEIGHT);
-	box->img.mlx_data = mlx_get_data_addr(box->img.mlx_img,
+	if (box->img.mlx_img == NULL)
+		ft_error("init\n");
+	box->img.mlx_data = mlx_get_data_addr(box->img.mlx_img, \
 			&box->img.bits_per_pixel, &box->img.win_lenth, &box->img.endian);
+	if (box->img.mlx_data == NULL)
+		ft_error("init\n");
 	box->zoom_s = 0.5;
 	make_x_y_copy(box);
 	scale_list(box);

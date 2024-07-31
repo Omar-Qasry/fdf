@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_davinci_bonus.c                                 :+:      :+:    :+:   */
+/*   davinci_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 08:52:51 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/30 08:59:47 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:21:46 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_change_color(t_fdf	*box, int x)
 	if (x == -1)
 		help_color(0x91F1EF, 0xFFD5E0, box);
 	else if (x == 0)
-		help_color (0xE43D00, 0xFFE900, box);
+		help_color (0xa7ff83, 0x76EFF0, box);
 	else if (x == 1)
 		help_color (0xE4F3E3, 0x5CA9E9, box);
 	else if (x == 2)
@@ -37,9 +37,9 @@ int	ft_change_color(t_fdf	*box, int x)
 	else if (x == 6)
 		help_color (0x505250, 0xCBD3C1, box);
 	else if (x == 7)
-		help_color (0xFCFB62, 0x91F9E5, box);
+		help_color (0x000000, 0x9F0049, box);
 	else if (x == 8)
-		help_color (0x000000, 0xffffff, box);
+		help_color (0x000000, 0x95B1AF, box);
 	return (0);
 }
 

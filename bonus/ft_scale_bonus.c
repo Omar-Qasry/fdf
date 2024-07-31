@@ -6,7 +6,7 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 22:30:47 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/30 10:03:56 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:07:15 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_prepar_point(t_point *point, t_fdf *box, float z)
 	y_offset = (HEIGHT - (box->line_length * scale * sin(0.7)
 				+ box->nb_line * scale * cos(0.523599))) / 2;
 	x_offset += 300;
-	y_offset += 100;
+	y_offset += 300;
 	point->x += x_offset;
 	point->y += y_offset;
 }
@@ -65,7 +65,7 @@ void	ft_prepar_point_c(t_point *point, t_fdf *box, float z)
 	y_offset = (HEIGHT - (box->line_length * scale * sin(0.7)
 				+ box->nb_line * scale * cos(0.523599))) / 2;
 	x_offset += 300;
-	y_offset += 100;
+	y_offset += 300;
 	point->x_c += x_offset;
 	point->y_c += y_offset;
 }

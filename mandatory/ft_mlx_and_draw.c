@@ -6,11 +6,12 @@
 /*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 01:10:04 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/25 11:45:14 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/07/31 08:18:03 by oel-qasr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <time.h>
 
 int	key_hook(int keycode, t_fdf *box)
 {
@@ -77,11 +78,19 @@ void	scale_list(t_fdf *box)
 void	ft_mlx_and_draw(t_fdf *box)
 {
 	box->mlx_conect = mlx_init();
+	if (box->mlx_conect == NULL)
+		ft_error("init\n");
 	box->mlx_win \
 		= mlx_new_window(box->mlx_conect, WIDTH, HEIGHT, box->maps_name);
+	if (box->mlx_win == NULL)
+		ft_error("init\n");
 	box->img.mlx_img = mlx_new_image(box->mlx_conect, WIDTH, HEIGHT);
+	if (box->img.mlx_img == NULL)
+		ft_error("init\n");
 	box->img.mlx_data = mlx_get_data_addr(box->img.mlx_img, \
 			&box->img.bits_per_pixel, &box->img.win_lenth, &box->img.endian);
+	if (box->img.mlx_data == NULL)
+		ft_error("init\n");
 	scale_list(box);
 	color_back(box);
 	ft_draw_x_lines(*box);
