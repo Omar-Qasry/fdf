@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omar <omar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/30 13:08:47 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/12/26 16:16:32 by omar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <errno.h>
-# include <stdio.h>
-# include "/usr/local/include/mlx.h"
+# include "/Users/omar/Desktop/fdf/minilibx/mlx.h"
 
 # define WIDTH 1920
 # define HEIGHT 1080

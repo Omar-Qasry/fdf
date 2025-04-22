@@ -1,10 +1,10 @@
 NAME = fdf
 NAME_B = fdf_bonus
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Ofast
+CFLAGS = -Ofast
 RM = rm -f
-MLX_DIR = minilibx
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
+MLX_DIR = /Users/omar/Desktop/fdf/minilibx
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 SRCS = mandatory/fdf.c mandatory/ft_map_error_check.c mandatory/get_next_line_utils.c mandatory/get_next_line.c \
 		mandatory/ft_error.c mandatory/ft_utils.c mandatory/ft_parsing.c mandatory/ft_push.c mandatory/ft_split.c \

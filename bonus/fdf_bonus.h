@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omar <omar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 01:15:09 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/30 11:12:01 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2024/12/28 16:24:03 by omar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <stdio.h>
-# include "/usr/local/include/mlx.h"
+# include "/Users/omar/Desktop/fdf/minilibx/mlx.h"
 
 # define WIDTH 1920
 # define HEIGHT 1080
@@ -35,8 +35,8 @@
 # define DOWN 125
 # define LEFT 123
 # define RIGHT 124
-# define MINUS 78 // -
-# define PLUS 69 // +
+# define MINUS 27 // -
+# define PLUS 24 // +
 # define PROJECTION 8 // C
 # define BUFFER_SIZE 21474836
 

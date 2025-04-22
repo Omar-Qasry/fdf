@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx_and_draw_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-qasr <oel-qasr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omar <omar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 01:10:04 by oel-qasr          #+#    #+#             */
-/*   Updated: 2024/07/31 10:26:31 by oel-qasr         ###   ########.fr       */
+/*   Updated: 2025/01/05 21:36:36 by omar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,18 @@ int	key_hook(int keycode, t_fdf *box)
 		make_conic(box);
 	return (0);
 }
-
 void	ft_mlx_and_draw(t_fdf *box)
 {
 	box->mlx_conect = mlx_init();
 	if (box->mlx_conect == NULL)
 		ft_error("init\n");
-	box->mlx_win \
-		= mlx_new_window(box->mlx_conect, WIDTH, HEIGHT, box->maps_name);
+	box->mlx_win = mlx_new_window(box->mlx_conect, WIDTH, HEIGHT, box->maps_name);
 	if (box->mlx_win == NULL)
 		ft_error("init\n");
 	box->img.mlx_img = mlx_new_image(box->mlx_conect, WIDTH, HEIGHT);
 	if (box->img.mlx_img == NULL)
 		ft_error("init\n");
-	box->img.mlx_data = mlx_get_data_addr(box->img.mlx_img, \
-			&box->img.bits_per_pixel, &box->img.win_lenth, &box->img.endian);
+	box->img.mlx_data = mlx_get_data_addr(box->img.mlx_img, &box->img.bits_per_pixel, &box->img.win_lenth, &box->img.endian);
 	if (box->img.mlx_data == NULL)
 		ft_error("init\n");
 	box->zoom_s = 0.5;
@@ -73,4 +70,4 @@ void	ft_mlx_and_draw(t_fdf *box)
 	mlx_hook(box->mlx_win, RED_X, 0, ft_destory, box);
 	mlx_key_hook(box->mlx_win, key_hook, box);
 	mlx_loop(box->mlx_conect);
-}
+} 
